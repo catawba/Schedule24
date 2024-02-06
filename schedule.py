@@ -59,16 +59,20 @@ def crudclasses(db):
     more = True
     while more:
         classname = input("Enter Class Name: ")
-        section = input("Section <a,b>,etc: ")
         gradelist = input("Enter grade list comma seperated: ")
         glist=gradelist.split(',')         
-        entireclass = input("Entire Class taught <t,f>: ")
-        saveclass = input("Save <s>: ")
+        entireclass = input("Entire Class taught <y/n>: ")
+        if entireclass == 'y':
+            eclass = True
+        else:
+            eclass = False
+            
+        saveclass = input("Save <y/n>: ")
         print()
-        if saveclass == 's':
+        if saveclass == 'y':
             db.insert({'name':classname,
-           'section':section,
-           'grades':glist})
+           'grades':glist,
+           'allclass':eclass})
             print('class saved')
         else:
             print('class discarded')
@@ -76,11 +80,40 @@ def crudclasses(db):
         cmore = input("Enter another class <y/n>? ")
         if cmore != 'y':
             more = False
+
+
+dbt.insert({'wname':'KCanty',
+           'first':'Kyle',
+           'last':'Canty',
+           'namelist':['KCanty']})       
+def crudteachers(db):
+    more = True
+    while more:
+        firstname = input("Enter First Name: ")
+        lastname = input("Enter Last Name: ")
+        wname = firstname[0]+lastname
+        namelist = [wname]
         
-    
+        saveteacher = input("Save <y/n>: ")
+        print()
+        if saveteacher == 'y':
+            db.insert({'wname':wname,
+           'first':firstname,
+           'last':lastname,
+           'namelist':namelist})
+            print('teacher saved')
+        else:
+            print('teacher discarded')
+            
+        cmore = input("Enter another teacher <y/n>? ")
+        if cmore != 'y':
+            more = False
+   
 # main
 
 crudclasses(dbc)
+crudteachers(dbt)
+
 
 
 
@@ -93,10 +126,7 @@ dbs.insert({'name':'Algebra2',
            'wname':'KCanty_Algebra2'})
 
 #-------- teachers
-dbt.insert({'wname':'KCanty',
-           'first':'Kyle',
-           'last':'Canty',
-           'namelist':['KCanty']})
+
 dbt.insert({'wname':'JBagwell%JCary%BCanty',
            'first':'MultFirst',
            'last':'MultLast',
