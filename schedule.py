@@ -106,15 +106,11 @@ def crudteachers(db):
         if cmore != 'y':
             more = False
 
-dbs.insert({'name':'Algebra2',
-           'tname':'KCanty',
-           'color':3,
-           'conlist':['KCanty_Algebra2','KBond_English2'],
-           'conflictnum':2,
-           'wname':'KCanty_Algebra2'})
+
 def crudstates(db):
     more = True
     while more:
+        print('States')
         cname = input("Enter Class Name: ")
         tname = input("Enter Teacher Name: ")
         color = 0       
@@ -140,42 +136,34 @@ def crudstates(db):
         if cmore != 'y':
             more = False
 
-
+def menu():
+    print()
+    print("Main Menu")
+    print("==================")
+    ch = input("Enter <t>eacher, <c>lasses, <s>tates, e<x>it: ")
+    print()
+    print()
+    return ch
  
 # main
+more = True
+while more:
+    choice = menu()
+    if choice == 't':
+        #-------- teachers
+        crudteachers(dbt)
 
-crudclasses(dbc)
-crudteachers(dbt)
-crudstates(dbs)
+    elif choice == 'c':
+        #-----------classes
+        crudclasses(dbc)
 
-
-
-
-#--------- states
-dbs.insert({'name':'Algebra2',
-           'tname':'KCanty',
-           'color':3,
-           'conlist':['KCanty_Algebra2','KBond_English2'],
-           'conflictnum':2,
-           'wname':'KCanty_Algebra2'})
-
-#-------- teachers
-
-dbt.insert({'wname':'JBagwell%JCary%BCanty',
-           'first':'MultFirst',
-           'last':'MultLast',
-           'namelist':['JBagwell','JCary','BCanty']})
-
-#-----------classes
-dbc.insert({'name':'Algebra2',
-           'section':None,
-           'grades':['10','11']})  
-
-dbc.insert({'name':'Math7',
-           'section':'a',
-           'grades':['7'],
-           'allstudents':True})          
-                  
+    elif choice == 's':
+        #--------- states
+        crudstates(dbs)
+    
+    elif choice == 'x':
+        # exit
+        more = False           
  
 for state in dbs:
     print(state)
@@ -185,7 +173,6 @@ for classes in dbc:
     
 for teacher in dbt:
     print(teacher)
-
 
 
 if False:
