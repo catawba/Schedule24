@@ -10,8 +10,7 @@ if True:
     dbs = TinyDB("states.json")
     
 class State:
-    def __init__(self,name="",tname="",color=0,conlist=None) -> None:
-        if conlist is None:
+    def __init__(self,name=""
             conlist = []
         self.name = name  # Algeba2 name of the class
         self.tname = tname # KCanty teacher's name
@@ -88,7 +87,7 @@ def crudteachers(db):
     while more:
         firstname = input("Enter First Name: ")
         lastname = input("Enter Last Name: ")
-        wname = firstname[0]+lastname
+        wname = firstname[0:2]+lastname
         namelist = [wname]
         
         saveteacher = input("Save <y/n>: ")
