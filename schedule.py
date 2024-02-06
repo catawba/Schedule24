@@ -67,7 +67,7 @@ def crudclasses(db):
         else:
             eclass = False
             
-        saveclass = input("Save <y/n>: ")
+        saveclass = input("Save the class <y/n>: ")
         print()
         if saveclass == 'y':
             db.insert({'name':classname,
@@ -175,7 +175,7 @@ for teacher in dbt:
     print(teacher)
 
 
-if False:
+if True:
     #empty all databases
     dbc.truncate()
     dbt.truncate()
