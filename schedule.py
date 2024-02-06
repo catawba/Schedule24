@@ -82,10 +82,7 @@ def crudclasses(db):
             more = False
 
 
-dbt.insert({'wname':'KCanty',
-           'first':'Kyle',
-           'last':'Canty',
-           'namelist':['KCanty']})       
+   
 def crudteachers(db):
     more = True
     while more:
@@ -108,11 +105,48 @@ def crudteachers(db):
         cmore = input("Enter another teacher <y/n>? ")
         if cmore != 'y':
             more = False
-   
+
+dbs.insert({'name':'Algebra2',
+           'tname':'KCanty',
+           'color':3,
+           'conlist':['KCanty_Algebra2','KBond_English2'],
+           'conflictnum':2,
+           'wname':'KCanty_Algebra2'})
+def crudstates(db):
+    more = True
+    while more:
+        cname = input("Enter Class Name: ")
+        tname = input("Enter Teacher Name: ")
+        color = 0       
+        clist = input("Enter Conflict list: ")
+        conlist = clist.split(',')
+        conflictnum = 0
+        wname = tname+'_'+cname
+        conlist.append(wname)
+      
+        savestate = input("Save <y/n>: ")
+        print()
+        if savestate == 'y':
+            db.insert({'cname':cname,
+           'tname':tname,
+           'wname':wname,
+           'color':color,
+           'conlist':conlist})
+            print('state saved')
+        else:
+            print('state discarded')
+            
+        cmore = input("Enter another state <y/n>? ")
+        if cmore != 'y':
+            more = False
+
+
+ 
 # main
 
 crudclasses(dbc)
 crudteachers(dbt)
+crudstates(dbs)
 
 
 
