@@ -58,7 +58,7 @@ class Sclass():
 
 # main
 
-#--------- classes
+#--------- states
 dbc.insert({'name':'Algebra2',
            'tname':'KCanty',
            'color':3,
@@ -73,12 +73,8 @@ dbt.insert({'wname':'KCanty',
            'namelist':['KCanty']})
 dbt.insert({'wname':'JBagwell%JCary%BCanty',
            'first':'MultFirst',
-           'last':'MultLast'
+           'last':'MultLast',
            'namelist':['JBagwell','JCary','BCanty']})
-mestate = State(name='Algebra2a',
-           tname='KCanty',
-           color=3,
-           conlist=['Algebra2b%KCanty','English2a%Bond'])    
 
 #-----------classes
 dbc.insert({'name':'KCanty_Algebra2',
@@ -90,21 +86,15 @@ dbc.insert({'name':'KCanty_Math7',
            'grades':['7'],
            'allstudents':True})          
                   
-
-meteacher = Teacher('KCanty',
-                    'Kyle',
-                    'Canty',
-                    ['KCanty']) 
-dbt.insert({meteacher})
-
-memult = Teacher('JBagwellJCaryBCanty',
-                 'JoanneJoeBlake',
-                 'BCC',
-                 ['JBagwell','JCary','BCanty','KCanty'])   
-
-
-if meteacher.wname in memult.namelist:
-    print('conflict found')
+ 
+for state in dbs:
+    print(state)
+    
+for classes in dbc:
+    print(classes)
+    
+for teacher in dbt:
+    print(teacher)
 
 if True: 
     dbc.close()
