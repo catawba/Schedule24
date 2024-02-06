@@ -55,11 +55,37 @@ class Sclass():
         self.section=section  # a,b section name, KCantyAlgebra2a
         self.allstudents=allstudents
         
-
+def crudclasses(db):
+    more = True
+    while more:
+        classname = input("Enter Class Name: ")
+        section = input("Section <a,b>,etc: ")
+        gradelist = input("Enter grade list comma seperated: ")
+        glist=gradelist.split(',')         
+        entireclass = input("Entire Class taught <t,f>: ")
+        saveclass = input("Save <s>: ")
+        print()
+        if saveclass == 's':
+            db.insert({'name':classname,
+           'section':section,
+           'grades':glist})
+            print('class saved')
+        else:
+            print('class discarded')
+            
+        cmore = input("Enter another class <y/n>? ")
+        if cmore != 'y':
+            more = False
+        
+    
 # main
 
+crudclasses(dbc)
+
+
+
 #--------- states
-dbc.insert({'name':'Algebra2',
+dbs.insert({'name':'Algebra2',
            'tname':'KCanty',
            'color':3,
            'conlist':['KCanty_Algebra2','KBond_English2'],
@@ -77,11 +103,11 @@ dbt.insert({'wname':'JBagwell%JCary%BCanty',
            'namelist':['JBagwell','JCary','BCanty']})
 
 #-----------classes
-dbc.insert({'name':'KCanty_Algebra2',
+dbc.insert({'name':'Algebra2',
            'section':None,
            'grades':['10','11']})  
 
-dbc.insert({'name':'KCanty_Math7',
+dbc.insert({'name':'Math7',
            'section':'a',
            'grades':['7'],
            'allstudents':True})          
@@ -96,6 +122,14 @@ for classes in dbc:
 for teacher in dbt:
     print(teacher)
 
+
+
+if False:
+    #empty all databases
+    dbc.truncate()
+    dbt.truncate()
+    dbs.truncate()
+    
 if True: 
     dbc.close()
     dbt.close()
