@@ -175,7 +175,7 @@ for teacher in dbt:
     print(teacher)
 
 
-if True:
+if False:
     #empty all databases
     dbc.truncate()
     dbt.truncate()
