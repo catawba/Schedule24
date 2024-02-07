@@ -17,8 +17,7 @@ class State:
         self.tname = tname # KCanty teacher's name
         self.color = color # 3 map color ie green is 3
         self.conlist=conlist # list containing conflicts with other classes  can't be taught at the same time can's have the same color
-        
-        
+           
     def conflictnum(self):  # count the number of conflicts for map coloring
         return len(self.conlist)
     
@@ -140,7 +139,12 @@ def menu():
     print()
     print("Main Menu")
     print("==================")
-    ch = input("Enter <t>eacher, <c>lasses, <s>tates, e<x>it: ")
+    print("Add <t>eachers")
+    print("Add <c>lasses")
+    print("Add <s>tates")
+    print("<l>oad states")
+    print("e<x>it")
+    ch = input("Enter choice: ")
     print()
     print()
     return ch
@@ -160,6 +164,10 @@ while more:
     elif choice == 's':
         #--------- states
         crudstates(dbs)
+    
+    elif choice == 'l':
+        # load states from teachers and classes
+        pass
     
     elif choice == 'x':
         # exit
