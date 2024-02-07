@@ -10,7 +10,8 @@ if True:
     dbs = TinyDB("states.json")
     
 class State:
-    def __init__(self,name=""
+    def __init__(self,name="",tname="",color=0,conlist=None) -> None:
+        if conlist is None:
             conlist = []
         self.name = name  # Algeba2 name of the class
         self.tname = tname # KCanty teacher's name
