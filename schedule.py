@@ -180,7 +180,7 @@ for classes in dbc:
     print(classes)
     
 for teacher in dbt:
-    print(teacher)
+    print(teacher['first'])
 
 
 if False:

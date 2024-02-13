@@ -1,0 +1,27 @@
+{# teachers html #}
+
+{% extends 'nav.html' %}
+{% block content %}
+  <h1>Teachers</h1>
+  <table>
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Work Name</th>
+    </tr>
+      {% for t in teachinfo%}
+      <tr>
+      <td>
+        {{t.first}}
+      </td>
+      <td>
+        {{t.last}}
+      </td>
+      <td>
+        {{t.wname}}
+      </td>
+      </tr>
+      {%endfor%}
+  
+</table>
+{% endblock %}

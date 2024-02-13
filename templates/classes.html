@@ -1,0 +1,28 @@
+{# classes html #}
+
+{% extends 'nav.html' %}
+{% block content %}
+  <h1>Classes</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Grades</th>
+      <th>AllClass</th>
+    </tr>
+      {% for c in classinfo%}
+      <tr>
+      <td>
+        {{c.name}}
+      </td>
+      <td>
+        {{c.grades}}
+      </td>
+      <td>
+        {{c.allclass}}
+      </td>
+     
+      </tr>
+      {%endfor%}
+  
+</table>
+{% endblock %}
