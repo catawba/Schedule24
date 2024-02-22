@@ -1,0 +1,46 @@
+{# assignstates html #}
+
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.classname.label }}{{ form.classname() }}
+        {{ form.section1.label }}{{ form.section1() }}
+        {{ form.section2.label }}{{ form.section2() }}
+        {{ form.submit() }}
+
+
+    </form>    
+
+
+    {% if classname %}
+    <div class="container">
+        <table>
+            <tr>
+              <th>Classname</th>
+              <th>Section</th>
+            </tr>
+            <tr>
+              <td>{{classname}}</td>
+              <td>{{section1}}{{section2}}</td>
+            </tr>
+        </table>
+    </div>
+
+        <p>The Classname you entered is {{classname}}</p>
+        <p>Section1 {{section1}}Section2 {{section2}}</p>
+        
+        
+    {% else %}
+        Please enter the classname.
+    {% endif %}
+
+    
+</p>
+
+
+{% endblock%}
