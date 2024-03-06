@@ -23,10 +23,8 @@ class Teacher():
         self.namelist=namelist
     
 
-teach = []
-for t in dbt:
-    teach.append(t)
-    
+teach = dbt.all()
+  
 clss = []
 for c in dbc:
     clss.append(c)
@@ -69,8 +67,7 @@ def assignstates():
 
 @app.route('/teachers/')
 def teachers():  
-    
-    return render_template('teachers.html', teachinfo=teach)
+    return render_template('teachers.html', teach=teach)
 
 @app.route('/index/addteachers')
 def addteachers():
