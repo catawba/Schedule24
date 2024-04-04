@@ -17,9 +17,7 @@
     <fast-tab-panel slot="tabpanel">Tab panel 1
         <fast-select>
             {% for c in clss %}
-            <fast-option value="1">{{clss.name}}</fast-option>
-            <fast-option value="2">Option 2</fast-option>
-            <fast-option value="3">Option 3</fast-option>
+            <fast-option value="1">{{c.name}}</fast-option>
             {% endfor %}
         </fast-select>
     </fast-tab-panel>
