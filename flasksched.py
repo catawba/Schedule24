@@ -22,13 +22,22 @@ class Teacher():
         self.last=last
         self.namelist=namelist
     
-
+# all the teacher information
 teach = dbt.all()
-  
-clss = []
-for c in dbc:
-    clss.append(c)
-    
+        # teachers.database structure
+          # wname    work name
+          # first
+          # last
+          # namelist  list of teachers teaching joint classes
+
+# all the class information          
+clss = dbc.all()
+        # classes.database structure
+          # name
+          # section
+          # grades
+          # allstudents
+
 
 
 app = Flask('__name__')
@@ -56,14 +65,12 @@ def assignstates():
         classname = form.classname.data
         section1 = form.section1.data
         section2 = form.section2.data
-        
-        
-    
+
         form.classname.data = ''
         form.section1.data = False
         form.section2.data = False
         
-    return render_template('assignstates.html',form=form,classname=classname,section1=section1,section2=section2)
+    return render_template('assignstates.html',teach=teach, clss=clss, form=form, classname=classname,section1=section1,section2=section2)
 
 @app.route('/teachers/')
 def teachers():  
