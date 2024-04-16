@@ -1,19 +1,18 @@
-{# assignstates html #}
+{# assignclasses html #}
 
 {% extends 'nav.html' %}
 
 {% block content %}
 
-{% for t in teach %}
-<p>{{t.wname}}</p>
+<p>{{form.teacher()}}</p>
 <fast-tabs>
-    <fast-tab slot="tab">Class one</fast-tab>
-    <fast-tab slot="tab">Class two</fast-tab>
-    <fast-tab slot="tab">Class three</fast-tab>
-    <fast-tab slot="tab">Class four</fast-tab>
-    <fast-tab slot="tab">Class five</fast-tab>
-    <fast-tab slot="tab">Class six</fast-tab>
-    <fast-tab slot="tab">Class seven</fast-tab>
+    <fast-tab slot="tab">{{form.class1.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class2.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class3.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class4.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class5.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class6.label}}</fast-tab>
+    <fast-tab slot="tab">{{form.class7.label}}</fast-tab>
     <fast-tab-panel slot="tabpanel">Tab panel 1
         <fast-select>
             {% for c in clss %}
@@ -44,7 +43,7 @@
     </form>    
 
 
-    {% if classname %}
+    {% if form.classname() %}
     <div class="container">
         <table>
             <tr>
@@ -52,22 +51,22 @@
               <th>Section</th>
             </tr>
             <tr>
-              <td>{{classname}}</td>
+              <td>{{form.classname()}}</td>
               <ul>
                 <li>
-                    {{section1}}
+                    {{form.section1()}}
                 </li>
                 <li>
-                    {{section2}}
+                    {{form.section2()}}
                 </li>
               </ul>
             </tr>
         </table>
     </div>
 
-        <p>The Classname you entered is {{classname}}</p>
+        <p>The Classname you entered is {{form.classname()}}</p>
         <p>The Classname you entered </p>
-        <p>Section1 {{section1}}Section2 {{section2}}</p>
+        <p>Section1 {{form.section1()}}Section2 {{form.section2()}}</p>
         
         
     {% else %}
@@ -77,6 +76,6 @@
     
 </p>
 
-{% endfor %}
+
 
 {% endblock%}

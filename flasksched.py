@@ -49,10 +49,48 @@ class Assignstate(FlaskForm):
     section2 = BooleanField(False)
     classname = StringField('Enter the class name')
     submit = SubmitField('Submit')
+    
+class Assignclass(FlaskForm):
+    teacher = StringField('Enter Teacher')
+    class1 = StringField('Class 1')
+    class2 = StringField('Class 2')
+    class3 = StringField('Class 3')
+    class4 = StringField('Class 4')
+    class5 = StringField('Class 5')
+    class6 = StringField('Class 6')
+    class7 = StringField('Class 7')
+    section1 = BooleanField(False)
+    section2 = BooleanField(False)
+    classname = StringField('Enter the class name')
+    submit = SubmitField('Submit')
 
 @app.route('/')
 def index():
     return render_template('home.html')
+
+@app.route('/assignclass',methods = ['GET','POST'])
+def assignclass():
+    classname = False
+    section1 = False
+    section2 = False
+    form = Assignclass()
+ 
+    
+    if form.validate_on_submit():
+        classname = form.classname.data
+        section1 = form.section1.data
+        section2 = form.section2.data
+
+        print(classname)
+        print(section1)
+        print(section2)
+
+        form.classname.data = ''
+        form.section1.data = False
+        form.section2.data = False
+        
+    return render_template('assignclasses.html',teach=teach, clss=clss, form=form)
+   
 
 @app.route('/assignstate',methods = ['GET','POST'])
 def assignstates():
@@ -66,12 +104,17 @@ def assignstates():
         section1 = form.section1.data
         section2 = form.section2.data
 
+        print(classname)
+        print(section1)
+        print(section2)
+
         form.classname.data = ''
         form.section1.data = False
         form.section2.data = False
         
     return render_template('assignstates.html',teach=teach, clss=clss, form=form, classname=classname,section1=section1,section2=section2)
 
+ 
 @app.route('/teachers/')
 def teachers():  
     return render_template('teachers.html', teach=teach)
